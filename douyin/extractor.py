@@ -7,6 +7,7 @@
 from typing import Dict, List, Optional
 
 from model.m_douyin import DouyinAweme, DouyinAwemeComment, DouyinCreator
+from var import source_keyword_var
 
 
 class DouyinExtractor:
@@ -117,7 +118,7 @@ class DouyinExtractor:
             aweme_url=f"https://www.douyin.com/video/{aweme_info.get('aweme_id', '')}",
             cover_url=cover_url,
             video_download_url=video_download_url,
-            source_keyword="",  # 这个值会在handler中设置
+            source_keyword=source_keyword_var.get(),
             is_ai_generated=aweme_info.get("aigc_info", {}).get("aigc_label_type", 0),
             # 作者信息
             user_id=str(author_info.get("uid", "")),
